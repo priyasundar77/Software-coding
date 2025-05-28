@@ -1,24 +1,28 @@
 import React from 'react'
-import banner from '../assets/banner.jpg';
-import {Link} from 'react-router-dom';
-import '../styles/Home.css';
-
+import ItemCard from './ItemCard'
+import data from '../src/data';
 const Home = () => {
   return (
-    <div className='home' style ={{backgroundImage:`url(${banner})`}}>
-        <div className="headerContainer">
-            <h4> Gadgets</h4>
-            
-            <Link to='/products'>
-            <button>Order Now
-            </button>              
-          
-          </Link>
+    <>
+      <h1 className='text-center mt-3'> Product List</h1>
+      <section className='py-4 container'>
+        <div className='row justify-content-center'>
+            {data.map((item, index)=>
+            {
+                return(
+                <ItemCard img={item.img} title={item.title} desc={item.Desc}
+                 price={item.price}
+                 item={item}               
+                  key={index}/>
 
-            </div> 
-      
-    </div>
-  )
-}
+
+                )
+            })}
+        </div>
+
+      </section>
+    </>
+  );
+};
 
 export default Home
